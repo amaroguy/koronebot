@@ -98,7 +98,7 @@ def main_gym_status():
     main_gym_info = get_area_info("Main Gym")
     status_message = "The Main Gym is currently "
 
-    #give busyness if rimac is open 
+    #give busyness if main gym is open 
     is_main_gym_open = main_gym_info["isOpen"]
 
     if not is_main_gym_open:
@@ -110,20 +110,18 @@ def main_gym_status():
  
     return status_message
 
-#if a floor is not provided (floor is still -1), print all the floors
-
 
 
 def geisel_floor_status(floor=None):
 
     geisel_info = get_area_info("Geisel Library")
     status_message = ''
-
-       #is geisel open was arg provided? 
+ 
     if not geisel_info["isOpen"]:
 
         return "geisel is not open!"
 
+#if no floor was provided, print least busy floors 
     if floor == None:
         return least_busy_geisel()
 
@@ -151,7 +149,6 @@ def geisel_floor_status(floor=None):
 
 def least_busy_geisel():
     geisel_info = get_area_info("Geisel Library")
-    #geisel_info["bestLocations"][i][ranking]
     status_message = 'Here are the least busy floors in geisel right now: \n\n'
     floors = []
 
@@ -183,8 +180,3 @@ def abbreviation_fix(arg):
     else:
         return arg
         
-
-
-print(geisel_floor_status())
-
-#for i in [1,2,4,5,6,7,8]:
