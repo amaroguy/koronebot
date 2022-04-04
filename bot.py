@@ -5,8 +5,7 @@ import ucsdstatus
 import os
 
 DISCORD_BOT_TOKEN = os.environ['KORONE_API_KEY']
-bot = lightbulb.BotApp(token=DISCORD_BOT_TOKEN, 
-                        default_enabled_guilds=(806678433303363636))
+bot = lightbulb.BotApp(token=DISCORD_BOT_TOKEN)
 
 @bot.command
 @lightbulb.add_cooldown(15.0, 10, lightbulb.GuildBucket)
