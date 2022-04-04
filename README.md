@@ -1,6 +1,7 @@
 # koronebot
 discord bot that lets you see the status of UCSD areas
-add this to your server: https://discord.com/api/oauth2/authorize?client_id=958851491333013525&permissions=36507290624&scope=bot
+add this bot to your server:
+https://discord.com/api/oauth2/authorize?client_id=958851491333013525&permissions=36507290624&scope=bot%20applications.commands
 
 COMMANDS 
 
