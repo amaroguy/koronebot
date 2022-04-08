@@ -160,7 +160,7 @@ def least_busy_geisel():
 
     #Geisel is never marked as "closed" and will leave TLC as "open"
     #if its the only one in the list, its closed.
-    if len(floors) == 1 and 9 in floors:
+    if len(floors) == 1 and 9 in floors or len(floors) == 0:
         return "Geisel is closed!"
 
     return status_message.strip()
