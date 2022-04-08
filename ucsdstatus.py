@@ -5,26 +5,9 @@ import re
 
 htmlregex = re.compile('<.*?>')
 
-LOCATIONS_ID = {
-    "Cafe Ventanas": 0,
-    "WongAvery Library": 1,
-    "WongAvery Grad Study": 2,
-    "Rimac": 3,
-    "Main Gym": 4,
-    "6th Restaurant": 5,
-    "The Bistro": 6,
-    "Roger's Market": 7,
-    "Canyon Vista" : 8,
-    "Geisel Library": 9,
-    "64 Degrees": 10,
-    "Foodworx": 11,
-    "Pines": 12,
-    "OceanView Terrace": 13,
-    "Price Center": 14,
-    "Student Services Center": 15,
-    "Parking Offices": 16,
-    "7th Market": 17,
-    "Club Med": 18}
+GEISEL_LIBRARY = "Geisel Library"
+RIMAC = "Rimac" 
+MAIN_GYM = "Main Gym" 
 
 GEISEL_FLOOR_API_INDEX = { 
     1:[0,1],
@@ -49,18 +32,26 @@ PEAK_HOURS_INDEX = 2
 NEXT_HOUR_INDEX = 0
 CROWDED_DAY_COMPARE_INDEX = 1
 
+def get_area_id(area, location_data):
+    index = 0
+    for location in location_data["data"]:
+        if location["name"] == area:
+            return index
+        index += 1
+
+
 #calls for rimac info and returns dict
 def get_area_info(area):
     api_results = requests.get(API_URL)
     location_data = json.loads(api_results.text)
-    area_id = LOCATIONS_ID[area]
+    area_id = get_area_id(area, location_data)
 
     return location_data["data"][area_id]
 
 def get_trend_info(area):
     api_results = requests.get(API_TREND_URL)
     location_data = json.loads(api_results.text)
-    area_id = LOCATIONS_ID[area]
+    area_id = get_area_id(area, location_data)
 
     return location_data["data"][area_id]
     
@@ -179,4 +170,9 @@ def abbreviation_fix(arg):
         return int(arg)
     else:
         return arg
-        
+ 
+print(rimac_status())
+print(main_gym_status())
+print(geisel_floor_status(floor=2))
+print(geisel_floor_status())
+
