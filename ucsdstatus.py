@@ -66,8 +66,8 @@ def clean_html(html):
 
 def rimac_status():
 
-    rimac_info = get_area_info("Rimac") 
-    rimac_trend_info = get_trend_info("Rimac")
+    rimac_info = get_area_info("RIMAC Fitness Gym") 
+    rimac_trend_info = get_trend_info("RIMAC Fitness Gym")
     
 
     status_message = "Rimac Weight Room is currently "
